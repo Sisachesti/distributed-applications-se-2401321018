@@ -1,0 +1,1468 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "Learn2Gether.API",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/Admin/index": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "summary": "Get all existing users in the system. Only accessible by Admin.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/assign-role": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "summary": "Assign a role to an user. Only accessible by Admin.",
+        "requestBody": {
+          "description": "User DTO for role asignment.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUserForRoleDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUserForRoleDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUserForRoleDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/remove-role": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "summary": "Remove a role from an user. Only accessible by Admin.",
+        "requestBody": {
+          "description": "User DTO for role removal.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUserForRoleDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUserForRoleDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUserForRoleDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Answer/save/{questionId}": {
+      "post": {
+        "tags": [
+          "Answer"
+        ],
+        "summary": "Saves an answer for a specified question submitted by the current user.",
+        "parameters": [
+          {
+            "name": "questionId",
+            "in": "path",
+            "description": "The GUID of the question.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The answer data to be saved.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SaveAnswerDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SaveAnswerDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SaveAnswerDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Answer/edit": {
+      "post": {
+        "tags": [
+          "Answer"
+        ],
+        "summary": "Edits an existing answer that belongs to the current user.",
+        "requestBody": {
+          "description": "Answer DTO for editing",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EditAnswerDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EditAnswerDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/EditAnswerDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Answer/delete": {
+      "post": {
+        "tags": [
+          "Answer"
+        ],
+        "summary": "Deletes an existing answer that belongs to the current user.",
+        "requestBody": {
+          "description": "The GUID of the answer to be deleted.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Courses/courses": {
+      "get": {
+        "tags": [
+          "Courses"
+        ],
+        "summary": "Get all courses.",
+        "parameters": [
+          {
+            "name": "Courses",
+            "in": "query",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/AllCoursesIndexDTO"
+              }
+            }
+          },
+          {
+            "name": "SearchQuery",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "CurrentPage",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "EntitiesPerPage",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "TotalPages",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Courses/courses/{courseId}": {
+      "get": {
+        "tags": [
+          "Courses"
+        ],
+        "summary": "Get details of a specific course by GUID.",
+        "parameters": [
+          {
+            "name": "courseId",
+            "in": "path",
+            "description": "The course GUID.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Courses/courses/{courseId}/enroll": {
+      "post": {
+        "tags": [
+          "Courses"
+        ],
+        "summary": "Authorized user with \"Student\" role can enroll to a course.",
+        "parameters": [
+          {
+            "name": "courseId",
+            "in": "path",
+            "description": "The Course GUID.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Courses/my-courses": {
+      "get": {
+        "tags": [
+          "Courses"
+        ],
+        "summary": "Get list of all enrolled courses.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Courses/my-courses/{courseId}": {
+      "get": {
+        "tags": [
+          "Courses"
+        ],
+        "summary": "Get details of a specific enrolled course, including modules, lectures, QnA and notes.",
+        "parameters": [
+          {
+            "name": "courseId",
+            "in": "path",
+            "description": "The course GUID.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Courses/my-courses/{courseId}/{lectureId}": {
+      "get": {
+        "tags": [
+          "Courses"
+        ],
+        "summary": "Watch a specific lecture video of an enrolled course.",
+        "parameters": [
+          {
+            "name": "courseId",
+            "in": "path",
+            "description": "The course GUID.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "lectureId",
+            "in": "path",
+            "description": "The lecture GUID.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Courses/add": {
+      "post": {
+        "tags": [
+          "Courses"
+        ],
+        "summary": "Add a new course. Only \"Instructor\" can add a new course.",
+        "requestBody": {
+          "description": "The course DTO to be mapped to the Course entity.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddNewCourseDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddNewCourseDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddNewCourseDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Courses/edit": {
+      "post": {
+        "tags": [
+          "Courses"
+        ],
+        "summary": "Edit an existing course. Only \"Instructor\" that owns the course can edit it.",
+        "requestBody": {
+          "description": "The DTO for editing existing course and map the changes to the entity.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EditCourseDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EditCourseDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/EditCourseDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Courses/delete/{courseId}": {
+      "post": {
+        "tags": [
+          "Courses"
+        ],
+        "summary": "Delete an existing course. Only \"Instructor\" that owns the course can delete it.",
+        "parameters": [
+          {
+            "name": "courseId",
+            "in": "path",
+            "description": "The ID of the course to be deleted.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Courses/top-courses": {
+      "get": {
+        "tags": [
+          "Courses"
+        ],
+        "summary": "Get top 3 courses based on the number of enrolled students.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Instructor/management": {
+      "get": {
+        "tags": [
+          "Instructor"
+        ],
+        "summary": "A list of courses owned by the current Instructor.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Instructor/management/{courseId}": {
+      "get": {
+        "tags": [
+          "Instructor"
+        ],
+        "summary": "Get details of a specific course owned by the current Instructor, able to be edited or deleted.",
+        "parameters": [
+          {
+            "name": "courseId",
+            "in": "path",
+            "description": "The Course GUID.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Lecture/add": {
+      "post": {
+        "tags": [
+          "Lecture"
+        ],
+        "summary": "Add a new Lecture to a Module. Accessible only by current Instructor of the course.",
+        "requestBody": {
+          "description": "Lecture DTO to be added.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddNewLectureDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddNewLectureDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddNewLectureDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Lecture/update": {
+      "post": {
+        "tags": [
+          "Lecture"
+        ],
+        "summary": "Existing Lecture to be updated by currrent Instructor owner.",
+        "requestBody": {
+          "description": "Lecture DTO to be edited.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateLectureDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateLectureDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateLectureDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Lecture/delete/{lectureId}": {
+      "post": {
+        "tags": [
+          "Lecture"
+        ],
+        "summary": "Existing Lecture to be deleted with its Notes, Questions and Answers by current Instructor owner.",
+        "parameters": [
+          {
+            "name": "lectureId",
+            "in": "path",
+            "description": "The Lecture GUID.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Module/add": {
+      "post": {
+        "tags": [
+          "Module"
+        ],
+        "summary": "Module to be added to existing course, owned by current Instructor.",
+        "requestBody": {
+          "description": "The Module DTO.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddNewModuleDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddNewModuleDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddNewModuleDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Module/delete/{moduleId}": {
+      "post": {
+        "tags": [
+          "Module"
+        ],
+        "summary": "Existing Module to be deleted with its Lectures by current Instructor owner.",
+        "parameters": [
+          {
+            "name": "moduleId",
+            "in": "path",
+            "description": "The Module GUID.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Module/edit": {
+      "post": {
+        "tags": [
+          "Module"
+        ],
+        "summary": "Existing Module to be edited by current Instructor owner.",
+        "requestBody": {
+          "description": "The Module DTO.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EditModuleDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EditModuleDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/EditModuleDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Note/save/{lectureId}": {
+      "post": {
+        "tags": [
+          "Note"
+        ],
+        "summary": "Saves a note for the specified Lecture in a Course, enrolled by the current Student user.",
+        "parameters": [
+          {
+            "name": "lectureId",
+            "in": "path",
+            "description": "The Lecture GUID.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The Note DTO.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SaveNoteDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SaveNoteDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SaveNoteDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Note/delete": {
+      "post": {
+        "tags": [
+          "Note"
+        ],
+        "summary": "Delete existing Note, owned by the current Student user.",
+        "requestBody": {
+          "description": "The Note GUID.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Note/edit": {
+      "post": {
+        "tags": [
+          "Note"
+        ],
+        "summary": "Edits an existing Note owned by current Student user.",
+        "requestBody": {
+          "description": "The Note DTO for edit.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EditNoteDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EditNoteDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/EditNoteDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Question/save/{lectureId}": {
+      "post": {
+        "tags": [
+          "Question"
+        ],
+        "summary": "Save a Question to a Lecture by current Studnet user.",
+        "parameters": [
+          {
+            "name": "lectureId",
+            "in": "path",
+            "description": "The Lecture GUID.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The Question DTO to be saved.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SaveQuestionDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SaveQuestionDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SaveQuestionDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Question/edit": {
+      "post": {
+        "tags": [
+          "Question"
+        ],
+        "summary": "Edit existing Question owned by current Student user.",
+        "requestBody": {
+          "description": "The Question DTO for edit.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EditQuestionDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EditQuestionDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/EditQuestionDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Question/delete": {
+      "post": {
+        "tags": [
+          "Question"
+        ],
+        "summary": "Deletes existing Question with its answers from current Student user.",
+        "requestBody": {
+          "description": "The Question GUID.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/User/register": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Register and new User.",
+        "requestBody": {
+          "description": "Register DTO with choice of username, Student/Instructor role.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignUpDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignUpDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignUpDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/User/login": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Login in the system with existing User.",
+        "requestBody": {
+          "description": "User DTO with Email and Password.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignInDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignInDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignInDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/User/logout": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Logout from the system.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/User/me": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Retrieves the authenticated user's username, email and roles for authorization for allowed actions in the system.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Wishlist/add": {
+      "post": {
+        "tags": [
+          "Wishlist"
+        ],
+        "summary": "Add a Course to current Student user's Wishlsit.",
+        "requestBody": {
+          "description": "DTO of the Course to be validated and added.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddToWishlistDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddToWishlistDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddToWishlistDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Wishlist/remove": {
+      "post": {
+        "tags": [
+          "Wishlist"
+        ],
+        "summary": "Remove existing Course from current Student user's Wishlist",
+        "requestBody": {
+          "description": "DTO of the Course to be validated and removed.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RemoveFromWishlistDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RemoveFromWishlistDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RemoveFromWishlistDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Wishlist/courses": {
+      "get": {
+        "tags": [
+          "Wishlist"
+        ],
+        "summary": "Retrieves the list of Courses in the current Student user's Wishlist.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AddNewCourseDTO": {
+        "required": [
+          "description",
+          "title"
+        ],
+        "type": "object",
+        "properties": {
+          "title": {
+            "minLength": 5,
+            "type": "string"
+          },
+          "description": {
+            "minLength": 10,
+            "type": "string"
+          },
+          "imageUrl": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AddNewLectureDTO": {
+        "required": [
+          "moduleId",
+          "title",
+          "videoUrl"
+        ],
+        "type": "object",
+        "properties": {
+          "moduleId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": {
+            "minLength": 3,
+            "type": "string"
+          },
+          "videoUrl": {
+            "minLength": 15,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AddNewModuleDTO": {
+        "required": [
+          "courseId",
+          "title"
+        ],
+        "type": "object",
+        "properties": {
+          "courseId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": {
+            "minLength": 3,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AddToWishlistDTO": {
+        "required": [
+          "courseId"
+        ],
+        "type": "object",
+        "properties": {
+          "courseId": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AllCoursesIndexDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "imageUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "instructor": {
+            "type": "string",
+            "nullable": true
+          },
+          "duration": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "students": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "rating": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "EditAnswerDTO": {
+        "required": [
+          "answerId",
+          "content",
+          "title"
+        ],
+        "type": "object",
+        "properties": {
+          "answerId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": {
+            "minLength": 3,
+            "type": "string"
+          },
+          "content": {
+            "minLength": 3,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "EditCourseDTO": {
+        "required": [
+          "courseId",
+          "description",
+          "title"
+        ],
+        "type": "object",
+        "properties": {
+          "courseId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": {
+            "minLength": 5,
+            "type": "string"
+          },
+          "description": {
+            "minLength": 10,
+            "type": "string"
+          },
+          "imageUrl": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "EditModuleDTO": {
+        "required": [
+          "moduleId",
+          "title"
+        ],
+        "type": "object",
+        "properties": {
+          "moduleId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": {
+            "minLength": 3,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "EditNoteDTO": {
+        "required": [
+          "content",
+          "noteId"
+        ],
+        "type": "object",
+        "properties": {
+          "noteId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "content": {
+            "minLength": 3,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "EditQuestionDTO": {
+        "required": [
+          "content",
+          "questionId",
+          "title"
+        ],
+        "type": "object",
+        "properties": {
+          "questionId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": {
+            "minLength": 3,
+            "type": "string"
+          },
+          "content": {
+            "minLength": 3,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetUserForRoleDTO": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "nullable": true
+          },
+          "role": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RemoveFromWishlistDTO": {
+        "required": [
+          "courseId"
+        ],
+        "type": "object",
+        "properties": {
+          "courseId": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SaveAnswerDTO": {
+        "required": [
+          "content",
+          "title"
+        ],
+        "type": "object",
+        "properties": {
+          "title": {
+            "minLength": 3,
+            "type": "string"
+          },
+          "content": {
+            "minLength": 3,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SaveNoteDTO": {
+        "required": [
+          "content"
+        ],
+        "type": "object",
+        "properties": {
+          "content": {
+            "minLength": 3,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SaveQuestionDTO": {
+        "required": [
+          "content",
+          "title"
+        ],
+        "type": "object",
+        "properties": {
+          "title": {
+            "minLength": 3,
+            "type": "string"
+          },
+          "content": {
+            "minLength": 3,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SignInDTO": {
+        "required": [
+          "email",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "minLength": 1,
+            "type": "string",
+            "format": "email"
+          },
+          "password": {
+            "minLength": 6,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SignUpDTO": {
+        "required": [
+          "email",
+          "firstName",
+          "lastName",
+          "password",
+          "role",
+          "username",
+          "verifyPassword"
+        ],
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "minLength": 3,
+            "type": "string"
+          },
+          "lastName": {
+            "minLength": 3,
+            "type": "string"
+          },
+          "username": {
+            "minLength": 6,
+            "type": "string"
+          },
+          "role": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "email": {
+            "minLength": 1,
+            "type": "string",
+            "format": "email"
+          },
+          "password": {
+            "minLength": 6,
+            "type": "string"
+          },
+          "verifyPassword": {
+            "minLength": 6,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateLectureDTO": {
+        "required": [
+          "lectureId",
+          "title",
+          "videoUrl"
+        ],
+        "type": "object",
+        "properties": {
+          "lectureId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": {
+            "minLength": 3,
+            "type": "string"
+          },
+          "videoUrl": {
+            "minLength": 15,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
