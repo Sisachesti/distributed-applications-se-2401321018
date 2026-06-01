@@ -13,3 +13,7 @@ Learn2Gether App has the followings:
 Admins have access to:
 + Check every user signed in the app
 + Change roles of a user
+## Instalation
+Clone the repository of the project, open the project in IDE (Prefarably VS Code for FrontEnd / VS for BackEnd) and start both projects:
++ For FrontEnd project, write in Terminal: npm run dev
++ For BackEnd project, open the solution project and run it in VS
