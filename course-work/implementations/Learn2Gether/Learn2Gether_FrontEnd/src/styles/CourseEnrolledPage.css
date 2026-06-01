@@ -1,0 +1,737 @@
+/* CourseEnrolledPage styles */
+.course-enrolled-page {
+  display: flex;
+  gap: 20px;
+  max-width: 1400px;
+  margin: 24px auto;
+  padding: 16px;
+  font-family: var(
+    --font-family,
+    Inter,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial
+  );
+  color: var(--text-color, #111);
+}
+
+.modules-sidebar {
+  width: 320px;
+  flex-shrink: 0;
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(20, 20, 20, 0.06);
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  position: sticky;
+  top: 80px;
+}
+
+.sidebar-title {
+  margin: 0 0 12px 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.modules-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.module-item {
+  border: 1px solid #e6e9ee;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.module-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: #f8fafc;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s;
+}
+
+.module-header:hover {
+  background: #f1f5f9;
+}
+
+.module-toggle {
+  font-size: 10px;
+  color: #64748b;
+  width: 12px;
+}
+
+.module-title {
+  flex: 1;
+  font-weight: 600;
+  font-size: 14px;
+  color: #334155;
+}
+
+.module-count {
+  font-size: 12px;
+  color: #94a3b8;
+  background: #e2e8f0;
+  padding: 2px 6px;
+  border-radius: 10px;
+}
+
+.lectures-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+}
+
+.lecture-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px 10px 32px;
+  cursor: pointer;
+  border-top: 1px solid #f1f5f9;
+  transition: background 0.15s;
+}
+
+.lecture-item:hover {
+  background: #f8fafc;
+}
+
+.lecture-item.active {
+  background: #dbeafe;
+  border-left: 3px solid #0366d6;
+}
+
+.lecture-title {
+  font-size: 13px;
+  color: #475569;
+  flex: 1;
+}
+
+.lecture-item.active .lecture-title {
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.lecture-duration {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+.main-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.video-area {
+  background: #000;
+  padding: 12px;
+  border-radius: 8px;
+  color: #fff;
+}
+
+.course-title {
+  margin: 0 0 4px 0;
+  font-size: 20px;
+}
+
+.lecture-title-display {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.main-video {
+  width: 100%;
+  height: 520px;
+  background: #000;
+  border-radius: 6px;
+  display: block;
+}
+
+/* Player wrapper enforces exact same size for every lecture */
+.video-player-wrapper {
+  width: 100%;
+  max-width: 980px;
+  height: 520px;
+  margin: 0 auto;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #000;
+  display: block;
+}
+
+.video-player-wrapper iframe,
+.video-player-wrapper .main-video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.video-meta {
+  margin-top: 8px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.video-nav {
+  display: flex;
+  gap: 8px;
+  margin: 12px 0 4px 0;
+}
+
+.video-nav button {
+  background: #f1f3f5;
+  border: 1px solid #e6e9ee;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.video-nav button.active {
+  background: #0366d6;
+  color: #fff;
+  border-color: #0256b3;
+}
+
+.section-content {
+  margin-top: 12px;
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(20, 20, 20, 0.04);
+}
+
+.qa-section h3,
+.notes-section h3,
+.info-section h3,
+.reviews-section h3 {
+  margin: 0 0 12px 0;
+}
+
+/* Q&A Header with Add Question Button */
+.qa-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.qa-header h3 {
+  margin: 0;
+}
+
+.add-question-btn {
+  background: #0366d6;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background 0.15s;
+}
+
+.add-question-btn:hover:not(:disabled) {
+  background: #0256b3;
+}
+
+.add-question-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Q&A List Container */
+.qa-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Question Container */
+.qa-question-container {
+  border: 1px solid #e6e9ee;
+  border-radius: 8px;
+  background: #fff;
+  overflow: hidden;
+}
+.qa-question-container {
+  position: relative;
+}
+
+/* Question ownership indicator bar */
+.qa-question-ownership {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: #f0f9ff;
+  border-bottom: 1px solid #e0f2fe;
+}
+
+.ownership-label {
+  font-size: 12px;
+  color: #0369a1;
+  font-weight: 500;
+}
+
+.qa-question-actions {
+  display: flex;
+  gap: 4px;
+}
+
+/* Question action buttons (edit/delete) shown on hover */
+.question-action-btn {
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  line-height: 1;
+  padding: 4px 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 0;
+  transition:
+    opacity 0.12s ease,
+    background 0.12s ease;
+}
+.question-action-btn:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+.question-delete-btn {
+  color: #ef4444;
+  font-size: 16px;
+}
+.question-edit-btn {
+  color: #64748b;
+  font-size: 14px;
+}
+.qa-question-container:hover .question-action-btn {
+  opacity: 1;
+}
+
+.qa-question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.qa-question-header:hover {
+  background: #f8fafc;
+}
+
+.qa-question-main {
+  flex: 1;
+}
+
+.qa-question-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #0f172a;
+  margin: 6px 0 8px 0;
+}
+
+.qa-question-stats {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  margin-left: 16px;
+}
+
+.answer-count {
+  font-size: 12px;
+  color: #64748b;
+  background: #f1f5f9;
+  padding: 4px 8px;
+  border-radius: 12px;
+}
+
+.expand-icon {
+  font-size: 10px;
+  color: #94a3b8;
+}
+
+/* Answers Section */
+.qa-answers-section {
+  border-top: 1px solid #f1f5f9;
+  padding: 12px 16px;
+  background: #fafbfc;
+}
+
+.answers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.answer-item {
+  background: #fff;
+  border: 1px solid #e6e9ee;
+  border-radius: 6px;
+  padding: 12px;
+}
+
+.answer-meta {
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 6px;
+}
+
+.answer-text {
+  font-size: 14px;
+  color: #0f172a;
+  line-height: 1.5;
+}
+
+/* Answer title styling */
+.answer-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 6px;
+}
+
+.no-answers {
+  font-size: 13px;
+  color: #94a3b8;
+  font-style: italic;
+  margin-bottom: 12px;
+}
+
+.answer-question-btn {
+  background: #f1f5f9;
+  color: #0f172a;
+  border: 1px solid #e6e9ee;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 13px;
+  transition: background 0.15s;
+}
+
+.answer-question-btn:hover {
+  background: #e2e8f0;
+}
+
+/* Forms */
+.qa-form {
+  margin-bottom: 16px;
+  padding: 14px;
+  background: #f8fafc;
+  border: 1px solid #e6e9ee;
+  border-radius: 8px;
+}
+
+.new-question-form {
+  margin-bottom: 20px;
+}
+
+.answer-form {
+  margin-top: 12px;
+  margin-bottom: 0;
+}
+
+.qa-item,
+.review-item {
+  border-bottom: 1px solid #eef2f6;
+  padding: 10px 0;
+}
+
+.qa-meta,
+.review-meta {
+  font-size: 13px;
+  color: #334155;
+  margin-bottom: 6px;
+}
+
+.qa-text,
+.review-text {
+  font-size: 15px;
+  color: #0f172a;
+}
+
+.qa-title-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #e6e9ee;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+
+.qa-title-input:focus {
+  outline: none;
+  border-color: #0366d6;
+  box-shadow: 0 2px 8px rgba(3, 102, 214, 0.1);
+}
+
+.qa-form textarea,
+.notes-textarea {
+  width: 100%;
+  min-height: 110px;
+  padding: 10px;
+  border: 1px solid #e6e9ee;
+  border-radius: 6px;
+  resize: vertical;
+  font-size: 14px;
+}
+
+.qa-actions,
+.notes-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.qa-actions button,
+.notes-actions button {
+  background: #0366d6;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+
+.qa-actions button:hover:not(:disabled),
+.notes-actions button:hover:not(:disabled) {
+  background: #0256b3;
+}
+
+.qa-actions button[type="button"],
+.notes-actions button:nth-child(2) {
+  background: #eef2f6;
+  color: #0f172a;
+  border: 1px solid #e6e9ee;
+}
+
+.qa-actions button[type="button"]:hover:not(:disabled),
+.notes-actions button:nth-child(2):hover:not(:disabled) {
+  background: #e2e8f0;
+}
+
+.notes-actions button:nth-child(2) {
+  background: #eef2f6;
+  color: #0f172a;
+  border: 1px solid #e6e9ee;
+}
+
+/* Notes section specific styles */
+.notes-section {
+  margin-top: 12px;
+  background: #fff;
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 2px 8px rgba(20, 20, 20, 0.04);
+}
+.notes-header {
+  margin: 0 0 10px 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+}
+.notes-list {
+  list-style: none;
+  margin: 0 0 12px 0;
+  padding: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  border-top: 1px solid #f1f5f9;
+}
+.note-item {
+  padding: 10px 12px;
+  border-bottom: 1px solid #f1f5f9;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.note-item {
+  position: relative;
+}
+
+/* Delete button shown on hover */
+.note-delete-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border: none;
+  background: transparent;
+  color: #ef4444;
+  font-size: 16px;
+  line-height: 1;
+  padding: 4px 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 0;
+  transition:
+    opacity 0.12s ease,
+    background 0.12s ease;
+}
+.note-delete-btn:hover {
+  background: rgba(239, 68, 68, 0.06);
+}
+.note-item:hover .note-delete-btn {
+  opacity: 1;
+}
+
+/* Shared action button style (shown on hover) */
+.note-action-btn {
+  position: absolute;
+  top: 8px;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  line-height: 1;
+  padding: 4px 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 0;
+  transition:
+    opacity 0.12s ease,
+    background 0.12s ease;
+}
+.note-action-btn:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+/* Edit button positioned to the left of delete */
+.note-edit-btn {
+  right: 36px;
+  color: #0f172a;
+  font-size: 13px;
+}
+
+.note-item:hover .note-action-btn {
+  opacity: 1;
+}
+.note-meta {
+  font-size: 12px;
+  color: #64748b;
+}
+.note-text {
+  font-size: 14px;
+  color: #0f172a;
+  white-space: pre-wrap;
+}
+.notes-textarea {
+  width: 100%;
+  min-height: 110px;
+  padding: 12px;
+  border: 1px solid #e6e9ee;
+  border-radius: 8px;
+  resize: vertical;
+  font-size: 14px;
+  background: #ffffff;
+  transition:
+    box-shadow 0.15s,
+    border-color 0.15s;
+}
+.notes-textarea:focus {
+  outline: none;
+  border-color: #0366d6;
+  box-shadow: 0 4px 12px rgba(3, 102, 214, 0.12);
+}
+.notes-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+.notes-actions button {
+  padding: 8px 14px;
+}
+.notes-actions button:hover {
+  filter: brightness(0.98);
+}
+.notes-actions button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 900px) {
+  .notes-list {
+    max-height: 160px;
+  }
+}
+
+.course-desc {
+  margin-bottom: 12px;
+  color: #0f172a;
+}
+
+.course-meta-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 8px 20px;
+}
+
+.reviews-summary {
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.empty {
+  color: #64748b;
+  padding: 8px 0;
+}
+
+@media (max-width: 900px) {
+  .course-enrolled-page {
+    flex-direction: column;
+  }
+
+  .modules-sidebar {
+    width: 100%;
+    position: static;
+    max-height: 400px;
+  }
+
+  .main-video {
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .video-nav {
+    flex-wrap: wrap;
+  }
+  .main-video {
+    height: 200px;
+  }
+
+  .modules-sidebar {
+    max-height: 300px;
+  }
+}

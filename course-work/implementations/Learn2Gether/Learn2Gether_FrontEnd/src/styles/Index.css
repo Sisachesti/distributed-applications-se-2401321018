@@ -1,0 +1,27 @@
+/* Global reset and box-sizing rules applied project-wide */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%; /* 1rem = 10px for easier calculations */
+}
+
+body {
+  box-sizing: border-box;
+}
+
+/* Global selection color: match site brand instead of default blue */
+::selection {
+  background: #bc4749;
+  color: #ffffff;
+}
+/* Firefox specific */
+::-moz-selection {
+  background: #bc4749;
+  color: #ffffff;
+}

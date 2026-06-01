@@ -1,0 +1,99 @@
+.profile-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px 16px;
+  background: var(--bg, #f7f9fc);
+  min-height: calc(100vh - 80px);
+}
+
+.profile-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(24, 39, 75, 0.08);
+  width: 100%;
+  max-width: 900px;
+  padding: 24px;
+}
+
+.profile-header {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  border-bottom: 1px solid #eef2f7;
+  padding-bottom: 18px;
+}
+
+.avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6b8cff, #7de1b6);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 28px;
+}
+
+.user-info {
+  flex: 1;
+}
+
+.user-name {
+  margin: 0;
+  font-size: 20px;
+  color: #152238;
+}
+
+.user-email {
+  margin: 6px 0 0 0;
+  color: #697386;
+  font-size: 14px;
+}
+
+.actions {
+  margin-top: 10px;
+}
+
+.edit-btn {
+  background: #2f80ed;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.profile-body {
+  padding-top: 18px;
+}
+
+.courses-list {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+}
+
+.course-item {
+  background: #f5f8fc;
+  padding: 12px 14px;
+  border-radius: 8px;
+  color: #243447;
+  font-weight: 600;
+}
+
+@media (max-width: 520px) {
+  .profile-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .avatar {
+    width: 72px;
+    height: 72px;
+    font-size: 20px;
+  }
+}

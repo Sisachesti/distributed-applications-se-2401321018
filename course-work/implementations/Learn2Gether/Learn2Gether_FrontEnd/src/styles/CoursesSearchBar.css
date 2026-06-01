@@ -1,0 +1,144 @@
+/* /src/styles/CoursesSearchBar.css
+    Styles for the search bar used in CoursesPage.jsx
+*/
+
+/* Theme tokens (override in global stylesheet if needed) */
+:root {
+  --primary: #bc4749; /* bluish primary */
+  --muted: #f5f7fb; /* light background */
+  --text: #17223b; /* primary text */
+  --muted-text: #5b6b86; /* secondary text */
+  --danger: #c2585a; /* delete button */
+  --radius: 10px;
+  --shadow: 0 6px 18px rgba(27, 38, 62, 0.08);
+}
+
+/* Container */
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.6),
+    rgba(245, 247, 251, 0.9)
+  );
+  padding: 0.5rem;
+  border-radius: calc(var(--radius) + 2px);
+  box-shadow: var(--shadow);
+  max-width: 980px;
+  margin: 1.25rem auto;
+  padding-inline: 0.6rem;
+}
+
+/* Input */
+.search-input {
+  flex: 1 1 420px;
+  min-width: 0;
+  height: 3rem;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid rgba(23, 34, 59, 0.08);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--text);
+  font-size: 0.95rem;
+  outline: none;
+  transition: box-shadow 180ms ease, border-color 180ms ease,
+    transform 120ms ease;
+  box-shadow: inset 0 -1px 0 rgba(23, 34, 59, 0.02);
+}
+
+/* Placeholder */
+.search-input::placeholder {
+  color: var(--muted-text);
+  opacity: 1;
+}
+
+/* Focus state */
+.search-input:focus {
+  border-color: color-mix(in srgb, var(--primary) 60%, black 10%);
+  box-shadow: 0 6px 18px rgba(43, 108, 176, 0.12);
+  transform: translateY(-1px);
+}
+
+/* Buttons */
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 8px;
+  border: 2px solid var(--primary);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
+  box-shadow: 0 3px 10px rgba(16, 24, 40, 0.04);
+}
+
+/* View / Find button (primary) */
+.action-btn.view-btn {
+  background: var(--primary);
+  color: white;
+}
+
+/* Delete / Clear button (danger outline) */
+.action-btn.delete-btn {
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid rgba(229, 62, 62, 0.12);
+}
+
+.action-btn.delete-btn:hover {
+  background: var(--primary);
+  color: #fff;
+  border: 1px solid rgba(229, 62, 62, 0.12);
+}
+
+/* Hover & active */
+.action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+  opacity: 0.98;
+}
+.action-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.06);
+}
+
+/* Focus-visible for accessibility */
+.action-btn:focus-visible,
+.search-input:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--primary) 18%, white 82%);
+  outline-offset: 3px;
+}
+
+/* Small screen: stack items */
+@media (max-width: 640px) {
+  .search-container {
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 0.7rem;
+  }
+  .search-input {
+    width: 100%;
+    height: 46px;
+    padding: 0.6rem;
+  }
+  .action-btn {
+    width: 100%;
+    height: 44px;
+    justify-content: center;
+  }
+  .action-btn.view-btn,
+  .action-btn.delete-btn {
+    border-radius: 8px;
+  }
+}
+
+/* Tighten integration with CoursesPage layout */
+.courses-page .search-container {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}

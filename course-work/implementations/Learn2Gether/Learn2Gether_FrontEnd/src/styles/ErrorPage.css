@@ -1,0 +1,122 @@
+/* Error page styles matching the main site palette */
+:root {
+  --white: #ffffff;
+  --dark-red: #bc4749;
+  --light-red: #c2585a;
+  --light: #f2e8cf;
+  --muted: #545454;
+  --radius: 10px;
+}
+
+.error-page {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #ffffff 0%, #fbf8f6 100%);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial;
+}
+
+.error-card {
+  width: 100%;
+  max-width: 56rem;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.96),
+    rgba(254, 253, 252, 0.96)
+  );
+  border-radius: var(--radius);
+  padding: 3rem 2.25rem;
+  text-align: center;
+  box-shadow: 0 14px 40px rgba(11, 11, 12, 0.08);
+  border: 1px solid rgba(188, 71, 73, 0.06);
+}
+
+.error-title {
+  margin: 0;
+  font-weight: 900;
+  line-height: 1;
+  font-size: clamp(4rem, 11vw, 7rem);
+  background: linear-gradient(90deg, var(--dark-red), var(--light-red));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: -1px;
+}
+
+.error-sub {
+  margin: 0.5rem 0 1rem;
+  font-size: clamp(1.1rem, 2.6vw, 1.5rem);
+  color: #2f2f2f;
+  font-weight: 600;
+}
+
+.error-desc {
+  color: var(--muted);
+  margin: 0 auto 1.5rem;
+  max-width: 46rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.error-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.error-home {
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--dark-red), var(--light-red));
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 0 10px 26px rgba(188, 71, 73, 0.14);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.error-home:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(188, 71, 73, 0.18);
+}
+
+.error-home:focus-visible {
+  outline: 3px solid rgba(188, 71, 73, 0.16);
+  outline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  .error-card {
+    padding: 2rem 1.25rem;
+  }
+  .error-desc {
+    font-size: 0.98rem;
+  }
+}
+
+/* Icon adjustments */
+.error-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.error-icon__svg {
+  width: 6.5rem;
+  height: 6.5rem;
+  display: block;
+}
+
+@media (max-width: 480px) {
+  .error-icon__svg {
+    width: 5rem;
+    height: 5rem;
+  }
+  .error-title {
+    font-size: clamp(3rem, 14vw, 5rem);
+  }
+}

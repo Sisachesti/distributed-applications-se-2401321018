@@ -1,0 +1,19 @@
+@import "./CoursesPage.css";
+
+/* Simple overrides for My Courses page */
+.courses-title {
+  letter-spacing: 0.2px;
+}
+
+.empty-message {
+  width: 100%;
+  max-width: 56rem;
+  margin: 4rem auto;
+  text-align: center;
+  color: #555;
+}
+
+.empty-message p {
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+}

@@ -1,0 +1,190 @@
+:root {
+  --white: #ffffff;
+  --dark-red: #bc4749; /* orange */
+  --light-red: #c2585a; /* yellow */
+  --light: #f2e8cf;
+  --radius: 8px;
+  --nav-height: 6rem; /* single source of truth for nav size */
+}
+
+/* Navbar container */
+/* Make navbar fixed to top. Add top padding to the page to avoid content being hidden under the bar. */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1rem 1.5rem;
+  height: var(--nav-height);
+  min-height: var(--nav-height);
+  background: var(--white);
+  box-shadow: 0 6px 18px rgba(20, 20, 20, 0.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial;
+  z-index: 1000;
+}
+
+/* Logo uses the orange->yellow gradient as text */
+.nav-logo {
+  font-weight: 700;
+  font-size: 1.8rem;
+  letter-spacing: 0.2px;
+  background: linear-gradient(90deg, var(--dark-red), var(--light-red));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-decoration: none;
+  padding: 0.15rem 0.25rem;
+  transition: all 160ms ease;
+}
+.nav-logo:hover {
+  transform: translateY(-1px);
+}
+
+/* Align logo image and text horizontally */
+.nav-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav-logo-img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  display: inline-block;
+}
+
+/* Links list */
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+/* Links group wrapper for conditional sections */
+.nav-links-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+/* Generic link style */
+.nav-link {
+  display: inline-block;
+  padding: 0.8rem 1.2rem;
+  color: var(--dark-red);
+  text-decoration: none;
+  border-radius: var(--radius);
+  border: 2px solid transparent; /* reserve space to avoid layout shift on hover */
+  box-sizing: border-box;
+  transition: all 160ms ease;
+  font-weight: 500;
+  font-size: 1.4rem;
+}
+
+/* Hover state: subtle orange outline and slight lift */
+.nav-link:hover {
+  border-color: var(--dark-red);
+  transform: translateY(-1px);
+  color: var(--dark-red);
+}
+
+/* Active/current route: light green pill with white text */
+.nav-link.active {
+  background: var(--light-red);
+  color: #fff; /* dark green for contrast */
+}
+
+/* Special login link: emphasize with gradient border */
+.nav-link.nav-login {
+  background: white;
+  position: relative;
+  border: 2px solid transparent; /* keep same sizing as other links */
+}
+.nav-link.nav-login:hover {
+  background-color: var(--light-red);
+  border-color: transparent;
+  box-shadow: 0 6px 12px rgba(255, 122, 24, 0.08);
+  transform: translateY(-1px);
+  color: #fff;
+}
+
+/* Make nav-login show gradient text on active */
+.nav-link.nav-login.active {
+  background: var(--light-red);
+  color: #fff;
+}
+
+/* Special signup link: same styling as login */
+.nav-link.nav-signup {
+  background: white;
+  position: relative;
+  border: 2px solid transparent;
+}
+.nav-link.nav-signup:hover {
+  background-color: var(--light-red);
+  border-color: transparent;
+  box-shadow: 0 6px 12px rgba(255, 122, 24, 0.08);
+  transform: translateY(-1px);
+  color: #fff;
+}
+.nav-link.nav-signup.active {
+  background: var(--light-red);
+  color: #fff;
+}
+
+/* Accessible focus */
+.nav-link:focus {
+  outline: 3px solid var(--light-red); /* light-greenish focus ring */
+  outline-offset: 2px;
+  border-radius: calc(var(--radius) - 2px);
+}
+
+/* Responsive: collapse spacing on small screens */
+@media (max-width: 640px) {
+  .navbar {
+    padding: 0.75rem;
+  }
+  .nav-links {
+    gap: 0.5rem;
+  }
+  .nav-link {
+    padding: 0.6rem 0.9rem;
+    font-size: 1.1rem;
+  }
+  .nav-logo {
+    font-size: 1.25rem;
+    gap: 0.5rem;
+    align-items: center;
+    display: inline-flex;
+  }
+  .nav-logo-img {
+    width: 32px;
+    height: 32px;
+  }
+  :root {
+    --nav-height: 5.5rem;
+  } /* or whatever you prefer */
+}
+
+.app-content {
+  padding-top: var(--nav-height);
+}

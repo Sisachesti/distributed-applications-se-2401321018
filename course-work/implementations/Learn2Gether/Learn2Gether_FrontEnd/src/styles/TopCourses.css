@@ -1,0 +1,223 @@
+/* TopCourses.css - simple, responsive styles for TopCourses.jsx */
+
+:root {
+  --white: #ffffff;
+  --dark-red: #bc4749;
+  --light-red: #c2585a;
+  --light: #f2e8cf;
+
+  --bg: var(--white);
+  --card: #f8fafc;
+  --muted: var(--light-red);
+  --border: #e6e9ee;
+  --shadow: 0 6px 18px rgba(16, 24, 40, 0.06);
+  --radius: 12px;
+  --gap: 24px;
+  --max-width: 1200px;
+  --text: var(--dark-red);
+}
+
+/* Container */
+.tc-container {
+  max-width: var(--max-width);
+  margin: 32px auto;
+  padding: 28px;
+  background: transparent;
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial;
+  color: var(--text);
+}
+
+/* Header */
+.tc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.tc-heading {
+  font-size: 1.25rem;
+  margin: 0;
+  font-weight: 600;
+}
+.tc-view-all {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.95rem;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+.tc-view-all:hover,
+.tc-view-all:focus {
+  background: rgba(37, 99, 235, 0.06);
+  outline: none;
+}
+
+/* Grid */
+.tc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap);
+}
+
+/* Card */
+.tc-card {
+  width: 30rem;
+  background: linear-gradient(180deg, var(--card), #ffffff);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 300px; /* larger card */
+  box-shadow: 0 12px 30px rgba(16, 24, 40, 0.08);
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease;
+}
+.tc-card:focus-within,
+.tc-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(16, 24, 40, 0.14);
+}
+
+/* Media */
+.tc-media {
+  width: 100%;
+  height: 200px; /* taller media for bigger cards */
+  object-fit: cover;
+  display: block;
+}
+
+/* Body */
+.tc-body {
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1 1 auto;
+}
+.tc-title {
+  font-size: 1.15rem;
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Meta */
+.tc-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+.tc-instructor {
+  font-weight: 500;
+  color: var(--muted);
+}
+.tc-sep {
+  color: var(--border);
+  margin: 0 4px;
+}
+.tc-stars {
+  color: #f59e0b;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+.tc-students {
+  color: var(--muted);
+}
+
+/* Actions */
+.tc-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: auto;
+}
+.tc-duration {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+.tc-button {
+  background: var(--white);
+  color: var(--dark-red);
+  border: 2px solid var(--dark-red);
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  transition:
+    background 160ms ease,
+    transform 160ms ease;
+}
+.tc-button:hover,
+.tc-button:focus {
+  background: var(--dark-red);
+  transform: translateY(-2px);
+  outline: none;
+  color: var(--white);
+  text-decoration: none;
+}
+
+/* Footer */
+.tc-footer {
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.6);
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.tc-rank {
+  font-weight: 700;
+  color: var(--accent-600);
+}
+.tc-updated {
+  text-align: right;
+}
+
+/* Responsive */
+@media (max-width: 1000px) {
+  .tc-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .tc-grid {
+    grid-template-columns: 1fr;
+  }
+  .tc-media {
+    height: 180px;
+  }
+  .tc-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+/* Small accessibility helpers */
+.tc-card:focus-within {
+  outline: 2px solid rgba(37, 99, 235, 0.12);
+}
+.tc-button:focus {
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
